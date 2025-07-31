@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -41,16 +40,6 @@ const Index = () => {
       {floatingStars}
       
       <div className="container mx-auto px-4 py-8">
-        {/* Navigation */}
-        <div className="text-center mb-8">
-          <Link to="/rules">
-            <Button variant="outline" className="mb-4">
-              <Icon name="ScrollText" size={16} className="mr-2" />
-              Правила использования
-            </Button>
-          </Link>
-        </div>
-
         {/* Main Title */}
         <div className="text-center mb-12">
           <h1 className="text-5xl md:text-6xl font-bold text-black mb-4 tracking-tight">
@@ -129,6 +118,34 @@ const Index = () => {
                   </div>
                 </div>
               )}
+            </CardContent>
+          </Card>
+
+          {/* Rules Section */}
+          <Card className="shadow-xl border-0 bg-purple-50/80 backdrop-blur-sm">
+            <CardHeader>
+              <CardTitle className="text-lg text-gray-700 flex items-center gap-2">
+                <Icon name="ScrollText" size={20} />
+                Правила использования
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3 text-sm text-gray-600">
+              <div className="flex items-start gap-2">
+                <Icon name="Check" size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                <p>Желания исполняются в течение 30 дней</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <Icon name="Check" size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                <p>Оплата происходит только после добавления желания</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <Icon name="Check" size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                <p>Все желания обрабатываются конфиденциально</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <Icon name="Check" size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                <p>Возврат средств при неисполнении гарантирован</p>
+              </div>
             </CardContent>
           </Card>
 
