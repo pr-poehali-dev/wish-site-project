@@ -62,7 +62,7 @@ const Index = () => {
             <div className="relative">
               <Input
                 type="text"
-                placeholder="Введите ваше желание..."
+                placeholder="введите ваш текст"
                 value={wish}
                 onChange={(e) => setWish(e.target.value)}
                 className="text-lg py-4 px-6 border-2 border-purple-200 focus:border-purple-500 rounded-xl"
