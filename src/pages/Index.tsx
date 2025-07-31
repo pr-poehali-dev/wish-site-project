@@ -56,9 +56,7 @@ const Index = () => {
         {/* Wish Input Section */}
         <Card className="shadow-2xl border-0 bg-white/90 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="text-xl text-gray-600 font-normal">
-              Напишите ваше желание
-            </CardTitle>
+            <CardTitle className="text-xl text-gray-600 font-normal">Напишите в чем нужна удача</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="relative">
