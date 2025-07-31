@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
@@ -52,119 +53,151 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto space-y-6">
-          {/* Wish Form */}
-          <Card className="shadow-xl border-0 bg-white/95 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="text-xl text-gray-700">
-                Форма для написания желаний
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="relative">
-                <Input
-                  type="text"
-                  placeholder="введите ваш текст"
-                  value={wish}
-                  onChange={(e) => setWish(e.target.value)}
-                  className="text-lg py-4 px-6 border-2 border-purple-200 focus:border-purple-500 rounded-xl"
-                  onKeyPress={(e) => e.key === 'Enter' && handleAddWish()}
-                />
-                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                  <Icon name="Wand2" size={20} className="text-purple-400" />
-                </div>
-              </div>
-              
-              <Button
-                onClick={handleAddWish}
-                className="w-full text-lg py-4 bg-purple-600 hover:bg-purple-700 rounded-xl transition-all duration-300 hover:scale-105"
-                disabled={!wish.trim()}
-              >
-                ОК
-              </Button>
-
-              {/* Payment Section - appears right after OK button */}
-              {showPayment && (
-                <div className="mt-6 p-6 bg-gradient-to-br from-purple-50 to-white border border-purple-200 rounded-xl animate-fade-in">
-                  <div className="text-center mb-4">
-                    <div className="text-4xl mb-2">✨</div>
-                    <h3 className="text-lg font-semibold text-gray-800">Страница оплаты</h3>
-                    <p className="text-sm text-gray-600">Ваше желание добавлено!</p>
-                  </div>
-                  
-                  <div className="bg-white p-4 rounded-lg border mb-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-purple-600">99 ₽</div>
-                      <p className="text-xs text-gray-500">За исполнение желания</p>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Button className="w-full bg-green-600 hover:bg-green-700 text-sm py-2">
-                      <Icon name="CreditCard" size={16} className="mr-2" />
-                      Оплатить картой
-                    </Button>
-                    <Button variant="outline" className="w-full text-sm py-2">
-                      <Icon name="Smartphone" size={16} className="mr-2" />
-                      Оплатить через СБП
-                    </Button>
-                  </div>
-                  
-                  <div className="mt-4 bg-purple-50 p-3 rounded-lg">
-                    <div className="flex items-center gap-2 text-xs text-purple-700">
-                      <Icon name="Shield" size={14} />
-                      <span>Гарантия возврата в течение 30 дней</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </CardContent>
-          </Card>
-
-          {/* Rules Section */}
-          <Card className="shadow-xl border-0 bg-purple-50/80 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="text-lg text-gray-700 flex items-center gap-2">
-                <Icon name="ScrollText" size={20} />
-                Правила использования
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-gray-600">
-              <div className="flex items-start gap-2">
-                <Icon name="Check" size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
-                <p>Желания исполняются в течение 30 дней</p>
-              </div>
-              <div className="flex items-start gap-2">
-                <Icon name="Check" size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
-                <p>Оплата происходит только после добавления желания</p>
-              </div>
-              <div className="flex items-start gap-2">
-                <Icon name="Check" size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
-                <p>Все желания обрабатываются конфиденциально</p>
-              </div>
-              <div className="flex items-start gap-2">
-                <Icon name="Check" size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
-                <p>Возврат средств при неисполнении гарантирован</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Wishes List */}
-          {wishes.length > 0 && (
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Left Column - Wish Form */}
+          <div className="space-y-6">
             <Card className="shadow-xl border-0 bg-white/95 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle className="text-lg text-gray-700">Ваши желания</CardTitle>
+                <CardTitle className="text-xl text-gray-700">
+                  Форма для написания желаний
+                </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
-                {wishes.map((w, index) => (
-                  <div key={index} className="flex items-center gap-3 bg-purple-50 p-3 rounded-lg">
-                    <Icon name="Star" size={16} className="text-purple-500" />
-                    <span className="text-gray-800">{w}</span>
+              <CardContent className="space-y-6">
+                <div className="relative">
+                  <Input
+                    type="text"
+                    placeholder="введите ваш текст"
+                    value={wish}
+                    onChange={(e) => setWish(e.target.value)}
+                    className="text-lg py-4 px-6 border-2 border-purple-200 focus:border-purple-500 rounded-xl"
+                    onKeyPress={(e) => e.key === 'Enter' && handleAddWish()}
+                  />
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <Icon name="Wand2" size={20} className="text-purple-400" />
                   </div>
-                ))}
+                </div>
+                
+                <Button
+                  onClick={handleAddWish}
+                  className="w-full text-lg py-4 bg-purple-600 hover:bg-purple-700 rounded-xl transition-all duration-300 hover:scale-105"
+                  disabled={!wish.trim()}
+                >
+                  ОК
+                </Button>
               </CardContent>
             </Card>
-          )}
+
+            {/* Rules Section */}
+            <Card className="shadow-xl border-0 bg-purple-50/80 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle className="text-lg text-gray-700 flex items-center gap-2">
+                  <Icon name="ScrollText" size={20} />
+                  Правила использования
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm text-gray-600">
+                <div className="flex items-start gap-2">
+                  <Icon name="Check" size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                  <p>Желания исполняются в течение 30 дней</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Icon name="Check" size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                  <p>Оплата происходит только после добавления желания</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Icon name="Check" size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                  <p>Все желания обрабатываются конфиденциально</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Icon name="Check" size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
+                  <p>Возврат средств при неисполнении гарантирован</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Wishes List */}
+            {wishes.length > 0 && (
+              <Card className="shadow-xl border-0 bg-white/95 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-lg text-gray-700">Ваши желания</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  {wishes.map((w, index) => (
+                    <div key={index} className="flex items-center gap-3 bg-purple-50 p-3 rounded-lg">
+                      <Icon name="Star" size={16} className="text-purple-500" />
+                      <span className="text-gray-800">{w}</span>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            )}
+          </div>
+
+          {/* Right Column - Payment Section */}
+          <div className="lg:sticky lg:top-8 h-fit">
+            {showPayment && (
+              <Card className="shadow-2xl border-0 bg-gradient-to-br from-purple-50 to-white backdrop-blur-sm animate-fade-in">
+                <CardHeader className="text-center">
+                  <div className="text-5xl mb-4">✨</div>
+                  <CardTitle className="text-xl text-gray-800">
+                    Страница оплаты
+                  </CardTitle>
+                  <p className="text-gray-600 text-sm">
+                    Ваше желание добавлено в магическую систему!
+                  </p>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="bg-white p-6 rounded-xl border border-purple-100">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-purple-600 mb-2">99 ₽</div>
+                      <p className="text-sm text-gray-500">За исполнение желания</p>
+                    </div>
+                  </div>
+                  
+                  <Separator />
+                  
+                  <div className="space-y-4">
+                    <h3 className="font-semibold text-gray-700">Способы оплаты:</h3>
+                    <div className="space-y-3">
+                      <Button className="w-full bg-green-600 hover:bg-green-700 flex items-center gap-2">
+                        <Icon name="CreditCard" size={18} />
+                        Оплатить картой
+                      </Button>
+                      <Button variant="outline" className="w-full flex items-center gap-2">
+                        <Icon name="Smartphone" size={18} />
+                        Оплатить через СБП
+                      </Button>
+                      <Button variant="outline" className="w-full flex items-center gap-2">
+                        <Icon name="Wallet" size={18} />
+                        Яндекс.Деньги
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <div className="flex items-center gap-2 text-sm text-purple-700">
+                      <Icon name="Shield" size={16} />
+                      <span className="font-medium">Гарантия исполнения</span>
+                    </div>
+                    <p className="text-xs text-purple-600 mt-1">
+                      Возврат средств в течение 30 дней, если желание не исполнится
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+            
+            {!showPayment && (
+              <Card className="shadow-xl border-0 bg-gray-50/80 backdrop-blur-sm">
+                <CardContent className="text-center py-12">
+                  <Icon name="ArrowLeft" size={48} className="text-gray-300 mx-auto mb-4" />
+                  <p className="text-gray-500">
+                    Добавьте желание, чтобы увидеть страницу оплаты
+                  </p>
+                </CardContent>
+              </Card>
+            )}
+          </div>
         </div>
       </div>
     </div>
