@@ -44,7 +44,7 @@ const Index = () => {
         {/* Main Title */}
         <div className="mb-12 relative">
           <h1 className="text-6xl md:text-7xl font-bold text-black mb-4 tracking-tight">
-            САЙТ ЖЕЛАНИЙ
+            САЙТ УДАЧИ
           </h1>
           <div className="flex justify-center items-center gap-2 text-purple-500">
             <Icon name="Sparkles" size={24} className="animate-pulse" />
